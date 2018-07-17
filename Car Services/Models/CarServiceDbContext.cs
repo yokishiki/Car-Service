@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using MySql.Data.Entity;
-using OrderInfo;
 
 namespace Car_Services
 {

@@ -52,10 +52,6 @@
       <HintPath>..\packages\MySql.Data.Entity.6.9.12\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OrderInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\OrderInfo.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -86,10 +82,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\BinContext.cs" />
+    <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CarServiceDbContext.cs" />
     <Compile Include="Models\BinAdapter.cs" />
     <Compile Include="Models\EFAdapter.cs" />
     <Compile Include="Models\IAdapter.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrdersInformation.cs" />
+    <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\XmlAdapter.cs" />
     <Compile Include="Models\XmlContext.cs" />
     <Compile Include="ViewModels\Command.cs" />

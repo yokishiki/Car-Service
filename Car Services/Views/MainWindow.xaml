@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Car Services" Height="639.5" Width="1012">
+        Title="Агрегатор данных от автосервисов" Height="600" Width="1000" MinWidth="1000" MinHeight="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="ordersDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=Orders, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="984" Margin="10,150,0,0">
+        <DataGrid x:Name="ordersDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=Orders, UpdateSourceTrigger=PropertyChanged}" Margin="0,50,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID заказа" Binding="{Binding OrderId}" />
                 <DataGridTextColumn Header="Марка" Binding="{Binding Car.Manufacturer}" />
@@ -24,7 +24,7 @@
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
-                    <Border Padding="10">
+                    <Border>
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Фамилия: " />
@@ -51,10 +51,9 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <ComboBox x:Name="dataSourceComboBox" ItemsSource="{Binding SourceData}" SelectedItem="{Binding SelectedItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,10,0,0">
+        <ComboBox x:Name="dataSourceComboBox" ItemsSource="{Binding SourceData}" SelectedItem="{Binding SelectedItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="10,10,0,0" Height="30" VerticalContentAlignment="Center" />
 
-        </ComboBox>
-        <Button x:Name="loadButton" Content="Load data" Command="{Binding LoadCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="187,10,0,0"/>
+        <Button x:Name="loadButton" Content="Загрузить данные" Command="{Binding LoadCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="175,10,0,0" Height="33"/>
 
     </Grid>
 </Window>

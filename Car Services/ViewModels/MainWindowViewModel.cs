@@ -1,13 +1,13 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace Car_Services
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : BaseViewModel
     {
         public MainWindowViewModel()
         {
             _loadCommand = new Command(LoadData);
+            _container = new UContainer();
             InitSources();
         }
 
@@ -15,6 +15,7 @@ namespace Car_Services
         private ObservableCollection<Order> _orders;
         private ObservableCollection<string> _sourceData; //list of inputs
         private string _selectedItem; //item which selected in comboBox
+        private UContainer _container;
 
         private Command _loadCommand;
         public Command LoadCommand
@@ -55,29 +56,16 @@ namespace Car_Services
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
         private void InitSources()
         {
-            _sourceData = new ObservableCollection<string>();
-            _sourceData.Add("Database");
-            _sourceData.Add("XML");
-            _sourceData.Add("Binary file");
+            _sourceData = _container.GetSourses();
         }
+
 
         private void LoadData()
         {
-            if (SelectedItem == "Database")
-                adapter = new EFAdapter();
-            else if (SelectedItem == "XML")
-                adapter = new XmlAdapter();
-            else if (SelectedItem == "Binary file")
-                adapter = new BinAdapter();
+            if (SelectedItem != null)
+                adapter = _container.ChooseAdapter(SelectedItem);
             if (adapter != null)
                 LoadOrders();
         }
@@ -85,8 +73,7 @@ namespace Car_Services
         private void LoadOrders()
         {
             Orders = null;
-            Orders = new ObservableCollection<Order>(adapter.GetOrders());
-           
+            Orders = adapter.GetOrders();           
         }
     }
 }

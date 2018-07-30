@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using System.Globalization;
 
 namespace Car_Services
 {
@@ -23,6 +24,7 @@ namespace Car_Services
             Orders = new List<Order>();
 
             XDocument xdoc = XDocument.Load("carservicedata.xml");
+            CultureInfo cultureInfo = new CultureInfo("ru-RU");
 
             foreach (var ownerXml in xdoc.Descendants("owner"))
             {
@@ -57,11 +59,11 @@ namespace Car_Services
                 Order order = new Order();
                 order.OrderId = int.Parse(orderXml.Attribute("orderid").Value);
                 order.WorkName = orderXml.Element("workname").Value;
-                order.TimeStart = Convert.ToDateTime(orderXml.Element("timestart").Value);
+                order.TimeStart = Convert.ToDateTime(orderXml.Element("timestart").Value,cultureInfo);
                 if (orderXml.Element("timefinish").Value == "")
                     order.TimeFinish = null;
                 else
-                    order.TimeFinish = Convert.ToDateTime(orderXml.Element("timefinish").Value);
+                    order.TimeFinish = Convert.ToDateTime(orderXml.Element("timefinish").Value, cultureInfo);
                 order.Price = int.Parse(orderXml.Element("price").Value);
                 order.CarId = int.Parse(orderXml.Element("carid").Value);
                 order.Car = Cars[carIndexId[order.CarId]];

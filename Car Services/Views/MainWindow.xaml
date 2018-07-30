@@ -6,10 +6,7 @@
         mc:Ignorable="d"
         Title="Агрегатор данных от автосервисов" Height="600" Width="1000" MinWidth="1000" MinHeight="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <DataGrid x:Name="ordersDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=Orders, UpdateSourceTrigger=PropertyChanged}" Margin="0,50,0,0">
+        <DataGrid x:Name="ordersDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=Orders, UpdateSourceTrigger=PropertyChanged}" Margin="0,50,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID заказа" Binding="{Binding OrderId}" />
                 <DataGridTextColumn Header="Марка" Binding="{Binding Car.Manufacturer}" />
@@ -17,7 +14,7 @@
                 <DataGridTextColumn Header="Год выпуска" Binding="{Binding Car.Year}" />
                 <DataGridTextColumn Header="Тип трансмиссии" Binding="{Binding Car.Transmission}" />
                 <DataGridTextColumn Header="Мощность двигателя" Binding="{Binding Car.Power}" />
-                <DataGridTextColumn Header="Наименование работ" Binding="{Binding WorkName}" />
+                <DataGridTextColumn Header="Наименование работ"  Width="*" Binding="{Binding WorkName}" />
                 <DataGridTextColumn Header="Время начала работ" Binding="{Binding TimeStart}" />
                 <DataGridTextColumn Header="Время окончания работ" Binding="{Binding TimeFinish}" />
                 <DataGridTextColumn Header="Стоимость работ" Binding="{Binding Price}" />

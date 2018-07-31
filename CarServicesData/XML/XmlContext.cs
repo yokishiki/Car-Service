@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Globalization;
+using System.Linq;
 
 namespace Car_Services
 {
@@ -14,6 +15,9 @@ namespace Car_Services
         private Dictionary<int, int> ownerIndexId;
         private Dictionary<int, int> carIndexId;
 
+        private string filePath = "carservicedata.xml";
+        private XDocument xdoc;
+
         public XmlContext()
         {
             ownerIndexId = new Dictionary<int, int>();
@@ -23,7 +27,7 @@ namespace Car_Services
             Cars = new List<Car>();
             Orders = new List<Order>();
 
-            XDocument xdoc = XDocument.Load("carservicedata.xml");
+            xdoc = XDocument.Load(filePath);
             CultureInfo cultureInfo = new CultureInfo("ru-RU");
 
             foreach (var ownerXml in xdoc.Descendants("owner"))
@@ -69,6 +73,67 @@ namespace Car_Services
                 order.Car = Cars[carIndexId[order.CarId]];
                 Orders.Add(order);
             }
+        }
+
+        public void WriteOrderToXmlFile(Order order)
+        {
+            order.OrderId = NextIndexOrder();
+            Orders.Add(order);
+            XElement xOrder = xdoc.Descendants("orders").First();
+            xOrder.Add(new XElement("order", new XAttribute("orderid", order.OrderId.ToString()),
+                new XElement("workname", order.WorkName),
+                new XElement("timestart", order.TimeStart.ToString()),
+                new XElement("timefinish", order.TimeFinish.ToString()),
+                new XElement("price", order.Price.ToString()),
+                new XElement("carid", order.Car.CarId.ToString())));
+            xdoc.Save(filePath);
+        }
+
+        public void WriteCarToXmlFile(Car car)
+        {
+            car.CarId = NextIndexCar();
+            Cars.Add(car);
+            XElement xCar = xdoc.Descendants("cars").First();
+            xCar.Add(new XElement("car", new XAttribute("carid", car.CarId.ToString()),
+                new XElement("manufacturer", car.Manufacturer),
+                new XElement("model", car.Model),
+                new XElement("year", car.Year.ToString()),
+                new XElement("transmission", car.Transmission),
+                new XElement("power", car.Power.ToString()),
+                new XElement("ownerid", car.Owner.OwnerId.ToString())));
+            xdoc.Save(filePath);
+        }
+
+        public void WriteOwnerToXmlFile(Owner owner)
+        {
+            owner.OwnerId = NextIndexOwner();
+            Owners.Add(owner);
+            XElement xOwner = xdoc.Descendants("owners").First();
+            xOwner.Add(new XElement("owner", new XAttribute("ownerid", owner.OwnerId.ToString()),
+                new XElement("firstname", owner.FirstName),
+                new XElement("lastname", owner.LastName),
+                new XElement("fathername", owner.FatherName),
+                new XElement("year", owner.Year.ToString()),
+                new XElement("phone", owner.Phone)));
+            xdoc.Save(filePath);
+        }
+
+        private int NextIndexOwner()
+        {
+            int maxInd = Owners.Select(x => x.OwnerId).Max();
+            return maxInd + 1;
+        }
+
+        private int NextIndexCar()
+        {
+            int maxInd = Cars.Select(x => x.CarId).Max();
+            return maxInd + 1;
+        }
+
+        private int NextIndexOrder()
+        {
+            int maxInd = Orders.Select(x => x.OrderId).Max();
+            return maxInd + 1;
         }
     }
 }

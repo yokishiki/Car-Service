@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="Агрегатор данных от автосервисов" Height="600" Width="1000" MinWidth="1000" MinHeight="800">
     <Grid>
-        <DataGrid x:Name="ordersDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=Orders, UpdateSourceTrigger=PropertyChanged}" Margin="0,50,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <DataGrid x:Name="ordersDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=Orders, UpdateSourceTrigger=PropertyChanged}" Margin="0,73,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID заказа" Binding="{Binding OrderId}" />
                 <DataGridTextColumn Header="Марка" Binding="{Binding Car.Manufacturer}" />
@@ -48,9 +48,18 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <ComboBox x:Name="dataSourceComboBox" ItemsSource="{Binding SourceData}" SelectedItem="{Binding SelectedItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="10,10,0,0" Height="30" VerticalContentAlignment="Center" />
+        <ComboBox x:Name="dataSourceComboBox" ItemsSource="{Binding SourceData}" SelectedItem="{Binding SelectedItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="10,35,0,0" Height="30" VerticalContentAlignment="Center" />
 
-        <Button x:Name="loadButton" Content="Загрузить данные" Command="{Binding LoadCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="175,10,0,0" Height="33"/>
+        <Button x:Name="loadButton" Content="Загрузить данные" Command="{Binding LoadCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="165,35,0,0" Height="33"/>
+        <DockPanel HorizontalAlignment="Stretch" Height="30" LastChildFill="False" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Top" Height="30" HorizontalContentAlignment="Stretch" Margin="0,0,0,0">
+                <MenuItem Header="_Добавить..." Height="30" VerticalAlignment="Center" Padding="8,5" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
+                    <MenuItem Header="_Заказ" Command="{Binding AddCommand}" CommandParameter="Order" />
+                    <MenuItem Header="_Машину" Command="{Binding AddCommand}"  CommandParameter="Car"/>
+                    <MenuItem Header="_Владельца" Command="{Binding AddCommand}" CommandParameter="Owner"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
 
     </Grid>
 </Window>

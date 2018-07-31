@@ -105,6 +105,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CommandParameter.cs" />
+    <Compile Include="WindowService.cs" />
+    <Page Include="Views\AddCarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddOrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddOwnerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,8 +128,21 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Command.cs" />
+    <Compile Include="IWindowService.cs" />
+    <Compile Include="ViewModels\AddCarWindowViewModel.cs" />
+    <Compile Include="ViewModels\AddOrderWindowViewModel.cs" />
+    <Compile Include="ViewModels\AddOwnerWindowViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\AddCarWindow.xaml.cs">
+      <DependentUpon>AddCarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddOrderWindow.xaml.cs">
+      <DependentUpon>AddOrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddOwnerWindow.xaml.cs">
+      <DependentUpon>AddOwnerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

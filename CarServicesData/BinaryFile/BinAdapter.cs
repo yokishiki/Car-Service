@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Car_Services
 {
@@ -15,14 +16,30 @@ namespace Car_Services
             return new ObservableCollection<Order>(BinContext.OrdersInfo.Orders);
         }
 
+        public ObservableCollection<Car> GetCars()
+        {
+            return new ObservableCollection<Car>(BinContext.OrdersInfo.Cars);
+        }
+
+        public ObservableCollection<Owner> GetOwners()
+        {
+            return new ObservableCollection<Owner>(BinContext.OrdersInfo.Owners);
+        }
+
         public void AddOrder(Order order)
         {
-            BinContext.OrdersInfo.Orders.Add(order);
-            if (!BinContext.OrdersInfo.Cars.Contains(order.Car))
-                BinContext.OrdersInfo.Cars.Add(order.Car);
-            if (!BinContext.OrdersInfo.Owners.Contains(order.Car.Owner))
-                BinContext.OrdersInfo.Owners.Add(order.Car.Owner);
-            BinContext.WriteToBinaryFile();
+            BinContext.WriteOrderToBinaryFile(order);
         }
+
+        public void AddOwner(Owner owner)
+        {
+            BinContext.WriteOwnerToBinaryFile(owner);
+        }
+
+        public void AddCar(Car car)
+        {
+            BinContext.WriteCarToBinaryFile(car);
+        }
+
     }
 }

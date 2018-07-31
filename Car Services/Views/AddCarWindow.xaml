@@ -1,0 +1,25 @@
+﻿<Window x:Class="Car_Services.AddCarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Car_Services"
+        mc:Ignorable="d"
+        Title="Новый автомобиль" Height="290" Width="500" MinWidth="500" MinHeight="290" MaxWidth="500" MaxHeight="290">
+    <Grid>
+        <TextBox x:Name="manufacturerTextBox" Text="{Binding Path=NewCar.Manufacturer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Margin="143,10,0,0" VerticalContentAlignment="Center"/>
+        <Label x:Name="manufacturerLabel" Content="Марка:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="30" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="modelTextBox" Text="{Binding Path=NewCar.Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Margin="143,45,0,0" VerticalContentAlignment="Center"/>
+        <Label x:Name="modelLabel" Content="Модель:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45,0,0" Height="30" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="yearTextBox" Text="{Binding Path=NewCar.Year, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Margin="143,80,0,0" VerticalContentAlignment="Center"/>
+        <Label x:Name="yearLabel" Content="Год выпуска:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0" Height="30" VerticalContentAlignment="Center" RenderTransformOrigin="0.757,2.821"/>
+        <TextBox x:Name="transmissionTextBox" Text="{Binding Path=NewCar.Transmission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Margin="143,115,0,0" VerticalContentAlignment="Center"/>
+        <Label x:Name="transmissionLabel" Content="Тип трансмиссии:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,115,0,0" Height="30" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="powerTextBox" Text="{Binding Path=NewCar.Power, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Margin="143,150,10,0" VerticalContentAlignment="Center"/>
+        <Label x:Name="powerLabel" Content="Мощность двигателя:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" Height="30" VerticalContentAlignment="Center"/>
+        <Label x:Name="ownerLabel" Content="Владелец:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,185,0,0" Height="30" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="ownerComboBox" ItemsSource="{Binding Owners}" SelectedItem="{Binding NewCar.Owner}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="339" Margin="143,185,10,0" Height="30" VerticalContentAlignment="Center"/>
+        <Button x:Name="addButton" Command="{Binding CreateCarCmd}" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="135" Margin="0,220,10,0" Height="30"/>
+
+    </Grid>
+</Window>

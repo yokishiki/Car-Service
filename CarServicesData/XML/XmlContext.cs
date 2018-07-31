@@ -79,11 +79,12 @@ namespace Car_Services
         {
             order.OrderId = NextIndexOrder();
             Orders.Add(order);
+            CultureInfo cultureInfo = new CultureInfo("ru-RU");
             XElement xOrder = xdoc.Descendants("orders").First();
             xOrder.Add(new XElement("order", new XAttribute("orderid", order.OrderId.ToString()),
                 new XElement("workname", order.WorkName),
-                new XElement("timestart", order.TimeStart.ToString()),
-                new XElement("timefinish", order.TimeFinish.ToString()),
+                new XElement("timestart", order.TimeStart.ToString("d", cultureInfo)),
+                new XElement("timefinish", order.TimeFinish == null ? "" : Convert.ToDateTime(order.TimeFinish, cultureInfo).ToString(cultureInfo)),
                 new XElement("price", order.Price.ToString()),
                 new XElement("carid", order.Car.CarId.ToString())));
             xdoc.Save(filePath);

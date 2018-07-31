@@ -20,14 +20,5 @@ namespace Car_Services
                 return (T)binaryFormatter.Deserialize(stream);
             }
         }
-
-        public static void WriteToBinaryFile()
-        {
-            using (Stream stream = File.Open(filePath, FileMode.CreateNew))
-            {
-                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                binaryFormatter.Serialize(stream, OrdersInfo);
-            }
-        }
     }
 }

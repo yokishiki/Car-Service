@@ -5,7 +5,7 @@ namespace Car_Services
     class BinContext
     {
         public static OrdersInformation OrdersInfo { get; set; }
-        private static string filePath = "CarServiceData.dat";
+        private static string filePath = "BinaryFile/CarServiceData.dat";
 
         public BinContext()
         {

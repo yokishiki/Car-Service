@@ -7,17 +7,17 @@
         mc:Ignorable="d"
         Title="Новый заказ" Height="255" Width="500" MinWidth="500" MinHeight="255" MaxWidth="500" MaxHeight="255">
     <Grid>
-        <TextBox x:Name="workNameTextBox" Text="{Binding Path=NewOrder.WorkName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="149,10,10,0" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="workNameTextBox" Text="{Binding Path=NewOrder.WorkName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="172,10,15,0" VerticalContentAlignment="Center" Width="305"/>
         <Label x:Name="workNameLabel" Content="Наименование работ: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="30" VerticalContentAlignment="Center"/>
-        <DatePicker x:Name="timeStartDatePicker" SelectedDate="{Binding NewOrder.TimeStart}" VerticalAlignment="Top" Margin="149,45,10,0" Height="30" VerticalContentAlignment="Center" Width="333"/>
+        <DatePicker x:Name="timeStartDatePicker" SelectedDate="{Binding NewOrder.TimeStart}" VerticalAlignment="Top" Margin="172,45,15,0" Height="30" VerticalContentAlignment="Center" Width="305"/>
         <Label x:Name="timeStartLabel" Content="Время начала: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45,0,0" Height="30" VerticalContentAlignment="Center"/>
-        <DatePicker x:Name="timeFinishDatePicker" SelectedDate="{Binding NewOrder.TimeFinish}" VerticalAlignment="Top" Margin="149,80,10,0" Height="30" VerticalContentAlignment="Center" Width="333"/>
+        <DatePicker x:Name="timeFinishDatePicker" SelectedDate="{Binding NewOrder.TimeFinish}" VerticalAlignment="Top" Margin="172,80,15,0" Height="30" VerticalContentAlignment="Center" Width="305"/>
         <Label x:Name="timeFinishLabel" Content="Время окончания: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0" Height="30" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="priceTextBox" Text="{Binding Path=NewOrder.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="149,115,10,0" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="priceTextBox" Text="{Binding Path=NewOrder.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="172,115,15,0" VerticalContentAlignment="Center" Width="305"/>
         <Label x:Name="priceLabel" Content="Стоимость: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,115,0,0" Height="30" VerticalContentAlignment="Center"/>
         <Label x:Name="сarLabel" Content="Автомобиль:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" Height="30" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="carComboBox" ItemsSource="{Binding Cars}" SelectedItem="{Binding NewOrder.Car}" VerticalAlignment="Top" Width="333" Margin="149,150,10,0" Height="30" VerticalContentAlignment="Center"/>
-        <Button x:Name="addButton" Command="{Binding CreateOrderCmd}" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="135" Margin="0,185,10,0" Height="30"/>
+        <ComboBox x:Name="carComboBox" ItemsSource="{Binding Cars}" SelectedItem="{Binding NewOrder.Car}" VerticalAlignment="Top" Margin="172,150,15,0" Height="30" VerticalContentAlignment="Center" Width="305"/>
+        <Button x:Name="addButton" Command="{Binding CreateOrderCmd}" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="135" Margin="0,185,15,0" Height="30"/>
 
     </Grid>
 </Window>

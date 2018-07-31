@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Агрегатор данных от автосервисов" Height="600" Width="1000" MinWidth="1000" MinHeight="800">
+        Title="Агрегатор данных от автосервисов" Height="800" Width="1000" MinWidth="1000" MinHeight="800">
     <Grid>
         <DataGrid x:Name="ordersDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Path=Orders, UpdateSourceTrigger=PropertyChanged}" Margin="0,73,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <DataGrid.Columns>

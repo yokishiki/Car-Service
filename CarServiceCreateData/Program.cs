@@ -256,7 +256,9 @@ namespace CarServiceCreateData
         static void Main(string[] args)
         {
             OrdersInformation of = new OrdersInformation();
-            of.Orders = GetOrders(GetCars(GenOwner()));
+            of.Owners = GenOwner();
+            of.Cars = GetCars(of.Owners);
+            of.Orders = GetOrders(of.Cars);
 
             using (Stream stream = File.Open("CarServiceData.dat", FileMode.Create))
             {

@@ -5,7 +5,7 @@ namespace Car_Services
 {
     public class BinAdapter : IAdapter
     {
-        private BinContext bc;
+        BinContext bc;
         public BinAdapter()
         {
             bc = new BinContext();

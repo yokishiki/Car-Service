@@ -112,16 +112,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Content Include="BinaryFile\CarServiceData.dat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="BinaryFile\CarServiceData.dat" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\CarServiceDatabase.sql" />
-    <Content Include="XML\carservicedata.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="XML\carservicedata.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
